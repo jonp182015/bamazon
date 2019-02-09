@@ -4,11 +4,15 @@ var c = require('./db.js');
 
 var connection = mysql.createConnection(c);
 
-connection.connect(function (err) {
-    if (err) throw err;
-    displayItems();
-    purchaseItem();
-});
+initBamazon();
+
+function initBamazon() {
+    connection.connect(function (err) {
+        if (err) throw err;
+        displayItems();
+        purchaseItem();
+    });
+}
 
 function displayItems() {
     connection.query("SELECT * FROM products", function (err, results) {
@@ -60,25 +64,36 @@ function purchaseItem() {
                         chosenItem = results[i];
                     }
                 }
-                if (chosenItem.stock_quantity >= quantity) {
-                    connection.query('UPDATE bamazonDB.products SET ? WHERE ?', [
-                        {
-                            stock_quantity: chosenItem.stock_quantity - quantity,  
-                        },
-                        {
-                            item_id: chosenItem.item_id,
+
+                if (chosenItem) {
+                    if (chosenItem.stock_quantity >= quantity && quantity !== 0) {
+                        connection.query('UPDATE bamazonDB.products SET ? WHERE ?', [
+                            {
+                                stock_quantity: chosenItem.stock_quantity - quantity,
+                            },
+                            {
+                                item_id: chosenItem.item_id,
+                            }
+                        ], function (error, results) {
+                            if (error) throw error;
+                        });
+                        console.log('\n-------------------');
+                        console.log('\nawsome!\n\nYou are about to purchase ' + quantity + ' ' + '"' + chosenItem.product_name + '"' + '\n\n' + 'Your total is: $' +
+                            parseFloat(chosenItem.price * quantity).toFixed(2) + '\n');
+                        console.log('--------------------');
+                    } else {
+                        if (quantity === 0) {
+                            console.log('\nPlease, enter a valid quantity\n')
+                        } else {
+                            console.log('\nInsufficient quantity!\n');
                         }
-                    ], function (error, results) {
-                        if (error) throw error;
-                    });
-                    console.log('\n-------------------');
-                    console.log('\nawsome!\n\nYou are about to purchase ' + quantity + ' ' + '"' + chosenItem.product_name + '"' + '\n\n' + 'Your total is: $' + 
-                    parseFloat(chosenItem.price * quantity).toFixed(2) + '\n');
-                    console.log('---------------------');
+                    }
+                    connection.end();
                 } else {
-                    console.log('\nInsufficient quantity!\n');
+                    console.log('\nInvalid product Id\n');
+                    connection.end();
                 }
-                connection.end();
             });
     });
 }
+
