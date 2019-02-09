@@ -5,3 +5,5 @@ From there, you will be asked to enter the item_id and the quantity of the produ
 If there is enough inventory to fulfill the order, the database gets updated and you will be given a total cost of your entire purchase.
 
 
+
+
