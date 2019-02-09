@@ -41,3 +41,7 @@ VALUES (9, 'if you can read this bring me wine socks', 'clothes', 11.89, 100);
 
 INSERT INTO products (item_id, product_name, department_name, price, stock_quantity)
 VALUES (10, 'hasbro conncet 4 game', 'toys', 9.99, 100);
+
+
+UPDATE `bamazonDB`.`products` SET `price` = '9.99' WHERE (`id` = '1');
+UPDATE `bamazonDB`.`products` SET `price` = '903.99' WHERE (`id` = '2');
