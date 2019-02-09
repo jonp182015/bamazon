@@ -14,32 +14,33 @@ CREATE TABLE products(
 );
 
 INSERT INTO products (item_id, product_name, department_name, price, stock_quantity)
-VALUES (1, 'rubiks cube', 'toys', 9.00, 100);
+VALUES (12, 'rubiks cube', 'toys', 9.89, 100);
 
 INSERT INTO products (item_id, product_name, department_name, price, stock_quantity)
-VALUES (2, 'mcbook pro 15"', 'electronics', 900.00, 100);
+VALUES (19, 'mcbook pro 15"', 'electronics', 900.99, 100);
 
 INSERT INTO products (item_id, product_name, department_name, price, stock_quantity)
-VALUES (3, 'uline army back pack', 'outdoors', 79.00, 100);
+VALUES (10, 'uline army back pack', 'outdoors', 79.00, 100);
 
 INSERT INTO products (item_id, product_name, department_name, price, stock_quantity)
-VALUES (4, 'jabra elite active 65t', 'electronics', 151.99, 100);
+VALUES (14, 'jabra elite active 65t', 'electronics', 151.99, 100);
 
 INSERT INTO products (item_id, product_name, department_name, price, stock_quantity)
-VALUES (5, 'instant pot 7-in-1 multi-cooker', 'appliances', 79.95, 100);
+VALUES (16, 'instant pot 7-in-1 multi-cooker', 'appliances', 79.95, 100);
 
 INSERT INTO products (item_id, product_name, department_name, price, stock_quantity)
-VALUES (6, 'echo dot', 'electronics', 49.99, 100);
+VALUES (11, 'echo dot', 'electronics', 49.99, 100);
 
 INSERT INTO products (item_id, product_name, department_name, price, stock_quantity)
-VALUES (7, 'fire tv stick 4k', 'electronics', 39.99, 100);
+VALUES (17, 'fire tv stick 4k', 'electronics', 39.99, 100);
 INSERT INTO products (item_id, product_name, department_name, price, stock_quantity)
-VALUES (8, 'fire hd 8 tablet with Alexa', 'electronics', 49.99, 100);
+VALUES (13, 'fire hd 8 tablet with Alexa', 'electronics', 49.99, 100);
 
 INSERT INTO products (item_id, product_name, department_name, price, stock_quantity)
-VALUES (9, 'if you can read this bring me wine socks', 'clothes', 11.89, 100);
+VALUES (18, 'if you can read this bring me wine socks', 'clothes', 11.89, 100);
 
 INSERT INTO products (item_id, product_name, department_name, price, stock_quantity)
-VALUES (10, 'hasbro conncet 4 game', 'toys', 9.99, 100);
+VALUES (15, 'hasbro conncet 4 game', 'toys', 9.99, 100);
 
+SELECT * FROM products;
 
